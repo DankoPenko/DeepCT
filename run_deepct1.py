@@ -1092,7 +1092,7 @@ def main(_):
         use_all_layers=FLAGS.use_all_layers)
 
     estimator = tf.contrib.tpu.TPUEstimator(
-        model_dir = "/mnt/ceph/storage/data-in-progress/data-teaching/theses/wstud-thesis-hollatz/DeepCT_w_loss/output"
+        model_dir = "/mnt/ceph/storage/data-in-progress/data-teaching/theses/wstud-thesis-hollatz/DeepCT_w_loss/output",
         use_tpu=FLAGS.use_tpu,
         model_fn=model_fn,
         config=run_config,
