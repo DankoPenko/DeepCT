@@ -833,7 +833,8 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
         #one_hot_labels = tf.one_hot(labels, depth=num_labels, dtype=tf.float32)
         #per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=-1)
         #loss = tf.reduce_mean(per_example_loss)
-
+        print(f'I AM HERE AND LOSS IS {loss}')
+        tf.summary.scalar("super_puper_loss", loss)  
         return loss, per_example_loss, masked_logits
 
 
@@ -1092,7 +1093,6 @@ def main(_):
         use_all_layers=FLAGS.use_all_layers)
 
     estimator = tf.contrib.tpu.TPUEstimator(
-        model_dir = "/mnt/ceph/storage/data-in-progress/data-teaching/theses/wstud-thesis-hollatz/DeepCT_w_loss/output",
         use_tpu=FLAGS.use_tpu,
         model_fn=model_fn,
         config=run_config,
