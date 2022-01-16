@@ -1117,10 +1117,11 @@ def main(_):
             drop_remainder=True)
         results = estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
         output_predict_file = os.path.join(FLAGS.output_dir, "results.txt")
-        f = open(output_predict_file, "w")
-        
-        f.write(results)
-        f.close()
+#         f = open(output_predict_file, "w")
+        with open(output_predict_file, "a") as f:
+            for key, value in result.items():
+                f.write(f'{key} ":" {value})
+#         f.close()
 
 
     if FLAGS.do_predict:
