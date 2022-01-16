@@ -1105,7 +1105,7 @@ def main(_):
         use_one_hot_embeddings=FLAGS.use_tpu, 
         use_all_layers=FLAGS.use_all_layers)
  
-    super_path = FLAGS.output_dir + '/model_dir' 
+#     super_path = FLAGS.output_dir + '/model_dir' 
   
     estimator = tf.contrib.tpu.TPUEstimator(
         use_tpu=FLAGS.use_tpu,
@@ -1113,8 +1113,7 @@ def main(_):
         config=run_config,
         train_batch_size=FLAGS.train_batch_size,
         eval_batch_size=FLAGS.eval_batch_size,
-        predict_batch_size=FLAGS.predict_batch_size,
-        model_dir=super_path)
+        predict_batch_size=FLAGS.predict_batch_size)
 
     if FLAGS.do_train:
         tf.logging.info("***** Running training *****")
