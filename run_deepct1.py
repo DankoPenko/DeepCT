@@ -1105,8 +1105,6 @@ def main(_):
         use_tpu=FLAGS.use_tpu,
         use_one_hot_embeddings=FLAGS.use_tpu, 
         use_all_layers=FLAGS.use_all_layers)
- 
-#     super_path = FLAGS.output_dir + '/model_dir' 
   
     estimator = tf.contrib.tpu.TPUEstimator(
         use_tpu=FLAGS.use_tpu,
