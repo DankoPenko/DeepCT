@@ -1098,6 +1098,7 @@ def main(_):
         use_all_layers=FLAGS.use_all_layers)
 
     estimator = tf.contrib.tpu.TPUEstimator(
+        model_dir = (FLAGS.output_dir + 'model_dir')
         use_tpu=FLAGS.use_tpu,
         model_fn=model_fn,
         config=run_config,
