@@ -1009,7 +1009,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
 
 def main(_):
     output_predict_file = os.path.join(FLAGS.output_dir, "test.txt")
-    f = open(output_predict_file, "W")
+    f = open(output_predict_file, "w")
     f.write("Now the file has more content!")
     f.close()
     
