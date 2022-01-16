@@ -849,11 +849,6 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
     def model_fn(features, mode, params):  # pylint: disable=unused-argument
         """The `model_fn` for TPUEstimator."""
          
-        tf.summary.scalar("model_fn_loss", loss)
-        test_file = os.path.join(FLAGS.output_dir, "abc.txt")
-        f = open(test_file, "a")
-        f.write('asd')
-        f.close()
       
         tf.logging.info("*** Features ***")
         for name in sorted(features.keys()):
@@ -876,6 +871,13 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
         (total_loss, per_example_loss, logits) = create_model(
             bert_config, is_training, input_ids, input_mask, segment_ids, target_weights, target_mask, use_one_hot_embeddings, use_all_layers)
 
+        tf.summary.scalar("model_fn_loss", total_loss)
+        tf.summary.scalar("model_fn_example_loss", per_example_loss)
+        test_file = os.path.join(FLAGS.output_dir, "abc.txt")
+        f = open(test_file, "a")
+        f.write('asd')
+        f.close()
+        
         tvars = tf.trainable_variables()
         initialized_variable_names = {}
         scaffold_fn = None
