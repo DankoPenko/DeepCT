@@ -1090,7 +1090,8 @@ def main(_):
             len(train_examples) / FLAGS.train_batch_size * FLAGS.num_train_epochs)
         test_file = os.path.join(FLAGS.output_dir, "train_samples.txt")
         f = open(test_file, "a")
-        f.write(num_train_steps)
+        to_write = str(num_train_steps) + " "
+        f.write(to_write)
         f.close()
         num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
         train_file = os.path.join(FLAGS.output_dir, "train.tf_record")
