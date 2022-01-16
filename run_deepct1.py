@@ -847,7 +847,13 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
 
     def model_fn(features, mode, params):  # pylint: disable=unused-argument
         """The `model_fn` for TPUEstimator."""
-
+         
+        tf.summary.scalar("model_fn_loss", loss)
+        test_file = os.path.join(FLAGS.output_dir, "abc.txt")
+        f = open(test_file, "a")
+        f.write('asd')
+        f.close()
+      
         tf.logging.info("*** Features ***")
         for name in sorted(features.keys()):
             tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
