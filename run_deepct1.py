@@ -872,7 +872,7 @@ def model_fn_builder(bert_config, init_checkpoint, learning_rate,
             bert_config, is_training, input_ids, input_mask, segment_ids, target_weights, target_mask, use_one_hot_embeddings, use_all_layers)
 
         tf.summary.scalar("model_fn_loss", total_loss)
-        tf.summary.scalar("model_fn_example_loss", per_example_loss)
+#         tf.summary.scalar("model_fn_example_loss", per_example_loss)
         test_file = os.path.join(FLAGS.output_dir, "abc.txt")
         f = open(test_file, "a")
         f.write('asd')
@@ -1090,7 +1090,7 @@ def main(_):
             len(train_examples) / FLAGS.train_batch_size * FLAGS.num_train_epochs)
         test_file = os.path.join(FLAGS.output_dir, "train_samples.txt")
         f = open(test_file, "a")
-        f.write('asd')
+        f.write(num_train_steps)
         f.close()
         num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
         train_file = os.path.join(FLAGS.output_dir, "train.tf_record")
