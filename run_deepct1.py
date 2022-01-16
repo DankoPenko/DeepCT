@@ -1088,6 +1088,10 @@ def main(_):
         train_examples = processor.get_train_examples(FLAGS.data_dir)
         num_train_steps = int(
             len(train_examples) / FLAGS.train_batch_size * FLAGS.num_train_epochs)
+        test_file = os.path.join(FLAGS.output_dir, "train_samples.txt")
+        f = open(test_file, "a")
+        f.write('asd')
+        f.close()
         num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
         train_file = os.path.join(FLAGS.output_dir, "train.tf_record")
         file_based_convert_examples_to_features(
