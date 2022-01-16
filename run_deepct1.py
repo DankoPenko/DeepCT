@@ -454,7 +454,7 @@ class QueryProcessor(DataProcessor):
         self.recall_fields = FLAGS.recall_field.split(',')
         tf.logging.info("Using recall fields {}".format(self.recall_fields))
 
-        self.train_folds = [(self.fold + i) % self.n_folds + 1 for i in range(self.n_folds - 2)]
+        selff_folds = [(self.fold + i) % self.n_folds + 1 for i in range(self.n_folds - 2)]
         self.dev_fold = (self.fold + self.n_folds - 2) % self.n_folds + 1
         self.test_fold = (self.fold + self.n_folds - 1) % self.n_folds + 1
         tf.logging.info("Train Folds: {}".format(str(self.train_folds)))
@@ -1008,10 +1008,10 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
 
 
 def main(_):
-    output_predict_file = os.path.join(FLAGS.output_dir, "test.txt")
-    f = open(output_predict_file, "w")
-    f.write("Now the file has more content!")
-    f.close()
+#     output_predict_file = os.path.join(FLAGS.output_dir, "test.txt")
+#     f = open(output_predict_file, "w")
+#     f.write("Now the file has more content!")
+#     f.close()
     
     tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -1115,7 +1115,11 @@ def main(_):
             seq_length=FLAGS.max_seq_length,
             is_training=True,
             drop_remainder=True)
-        estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
+        results = estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
+        output_predict_file = os.path.join(FLAGS.output_dir, "results.txt")
+        f = open(output_predict_file, "w")
+        f.write("results)
+        f.close()
 
 
     if FLAGS.do_predict:
