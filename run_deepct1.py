@@ -1008,6 +1008,11 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
 
 
 def main(_):
+    output_predict_file = os.path.join(FLAGS.output_dir, "test.txt")
+    f = open(output_predict_file, "W")
+    f.write("Now the file has more content!")
+    f.close()
+    
     tf.logging.set_verbosity(tf.logging.INFO)
 
     processors = {"query": QueryProcessor,
