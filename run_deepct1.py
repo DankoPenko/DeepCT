@@ -1118,7 +1118,7 @@ def main(_):
         results = estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
         output_predict_file = os.path.join(FLAGS.output_dir, results.txt")
         f = open(output_predict_file, "w")
-        f.write("results)
+        f.write(results)
         f.close()
 
 
