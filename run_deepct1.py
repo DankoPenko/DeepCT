@@ -1119,9 +1119,8 @@ def main(_):
         output_predict_file = os.path.join(FLAGS.output_dir, "results.txt")
 #         f = open(output_predict_file, "w")
         with open(output_predict_file, "a") as f:
-            for key, value in result.items():
-                
-                f.write(f'{key} ":" {value}')
+            for key, value in result.items():               
+                f.write(f'{key} : {value}')
 #         f.close()
 
 
