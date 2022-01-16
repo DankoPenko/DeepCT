@@ -1100,6 +1100,7 @@ def main(_):
         use_all_layers=FLAGS.use_all_layers)
  
     super_path = FLAGS.output_dir + '/model_dir' 
+  
     estimator = tf.contrib.tpu.TPUEstimator(
         use_tpu=FLAGS.use_tpu,
         model_fn=model_fn,
